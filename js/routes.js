@@ -23,11 +23,7 @@ export const PATHS = {
             <nav>
                 <h1>🙎‍♂️ <span id="username-text"></span></h1>
                 <label>Nivel</label>
-                <select id="level" class="select">                    
-                    <!--<option value="10000">Fácil</option>
-                    <option selected value="5000">Normal</option>
-                    <option value="2000">Dificil</option>-->
-                </select>
+                <select id="level" class="select"></select>
             </nav>
             <h3 class="score">Puntuación: <span id="score-data">0</span></h3>
             <h3 id="cnt-timer" class="timer hidden">Tiempo restante: <span id="timer-data"></span></h3>

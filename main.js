@@ -173,11 +173,9 @@ const setDisabledNumbers =  (disabled) =>{
 }
 
 
-
-
-/*******
+/*************************************
  * Service worker
- ******/
+ ************************************/
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function() {

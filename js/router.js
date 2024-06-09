@@ -28,8 +28,7 @@ export class Router {
             window.location.pathname = '/';
         }
         const URI = pathname === "/" ? "home" : pathname.replace("/", "");
-        // const URI = pathname === "/" ? "home" : "home";
-        this.load(URI, false,()=>{cll()}); // No modificar el historial al cargar inicialmente
+        this.load(URI, false,()=>{cll()}); 
     }
 
     /**

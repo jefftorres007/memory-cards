@@ -8,9 +8,13 @@ export class Router {
      */
     constructor(paths,cll) {
         this.paths = paths;
+        this.allowRoutes = [
+            '/',
+            '/home',
+            '/game',
+        ];
         this.initRouter(()=>{cll()});
         this.handlePopState(cll);
-        // cll();
     }
 
     /**
@@ -20,7 +24,9 @@ export class Router {
      */
     initRouter(cll) {
         const { pathname } = window.location;
+        // if (this.allowRoutes.indexOf(pathname)) 
         const URI = pathname === "/" ? "home" : pathname.replace("/", "");
+        // const URI = pathname === "/" ? "home" : "home";
         this.load(URI, false,()=>{cll()}); // No modificar el historial al cargar inicialmente
     }
 

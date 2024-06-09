@@ -51,14 +51,15 @@
   "screenshots": [
     {
       "src": "/images/screenshots/Screenshot_1.png",
-      "sizes": "640x480",
-      "type": "image/png"
+      "sizes": "860x490",
+      "type": "image/png",
+      "form_factor": "wide"
     },
     {
       "src": "/images/screenshots/Screenshot_2.png",
-      "sizes": "640x480",
-      "type": "image/png",
-      "form_factor": "wide"
+      "sizes": "440x920",
+      "type": "image/png"
+      
     }
   ]
 }

@@ -1,16 +1,16 @@
 # Memory Cards
 
-Este es un proyecto de una aplicación de tarjetas de memoria.
+Proyecto que emula el juego de tarjetas de memoria.
 
 ## Instrucciones de instalación
 
-1. Clona el repositorio:
+1. Clonar el repositorio:
 
    ```bash
    git clone https://github.com/jefftorres007/memory-cards.git
 
 
-2. Instala las dependencias:
+2. Instalar las dependencias:
     ```bash
     npm install
 

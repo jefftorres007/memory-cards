@@ -24,7 +24,9 @@ export class Router {
      */
     initRouter(cll) {
         const { pathname } = window.location;
-        // if (this.allowRoutes.indexOf(pathname)) 
+        if (this.allowRoutes.indexOf(pathname)) {
+            window.location.pathname = '/';
+        }
         const URI = pathname === "/" ? "home" : pathname.replace("/", "");
         // const URI = pathname === "/" ? "home" : "home";
         this.load(URI, false,()=>{cll()}); // No modificar el historial al cargar inicialmente

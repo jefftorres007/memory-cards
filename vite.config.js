@@ -17,6 +17,10 @@ export default defineConfig({
           src: 'serviceWorker.js',
           dest: ''
         },
+        {
+          src: 'favicon.ico',
+          dest: ''
+        },
       ]
     })
   ]

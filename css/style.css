@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo elementos genéricos */
+html,body {
+  background: #fdfdfd;
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  height: 100%;
+  margin: 0;
+}
+
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+h1 {
+  color: #e74c3c;
+}
+
+.hidden{
+  display: none;
+}
+
+
+/* Estilo para los inputs */
+.input-text {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-text:focus {
+    border-color: #3f51b5;
+    box-shadow: 0 0 8px rgba(63, 81, 181, 0.2);
+    outline: none;
+}
+
+/* Estilo para los botones */
+.button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem 0;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: #303f9f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+    background-color: #283593;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para los contenedores */
+.row{
+  padding: 1rem 2rem;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.container h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    color: #333;
+}
+
+.container p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #666;
+}
+
+.cnt-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 1.5rem auto;
+}
+
+.cnt-numbers .number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(33.333% - 1rem);
+  height: 100px;
+  background-color: #3f51b5;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 0;
+}
+
+.cnt-numbers .number.yes{
+background-color: #0bc539;
+}
+
+.cnt-numbers .number.no{
+background-color: #eb1717;
+}
+
+
+
+/* Estilo para barra de navegación */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3f51b5;
+  color: white;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  
+}
+
+li {
+  margin-right: 1rem;
+}
+
+
+/* Estilo para el select */
+.select {
+  display: block;
+  width: 40%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+}
+
+.select:focus {
+  border-color: #3f51b5;
+  box-shadow: 0 0 8px rgba(63, 81, 181, 0.2);
+  outline: none;
+}
+
+
+/* Estilo para el timer/score */
+.timer{
+  color: #e74c3c;
+}
+.score, .timer{
+    text-align: right;
+    margin: 1.5rem;
+}
+
+

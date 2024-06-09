@@ -1,41 +1,14 @@
-import { GameData } from './js/gameData.js';
-import { Router } from './js/router.js';
-import { PATHS } from './js/routes.js';
+const ROUTER = new Router(PATHS);
+// const gameData = new GameData();
 
-const initViewHome = () =>{
-  const userElm = document.querySelector('#username');
-  userElm.addEventListener('input', function (e) {
-      const value = e.target.value;    
-      const charsOK = value.replace(/[^a-zA-Z0-9]/g, '');
-      if (value !== charsOK) {
-          e.target.value = charsOK;
-      }
-
-      const btnGoGame = document.querySelector("#btn-go-game");
-      btnGoGame.addEventListener("click", goGame);
-  });
-}
-const initViewGame = () =>{
-
-  const level = document.querySelector("#level");
-  let levels = ``;
-  for (let i = 0; i < gameData.levels.length; i++) {
-    levels += `<option value="${gameData.levels[i].level}">${gameData.levels[i].name}</option>`   
-  }
-  level.innerHTML = levels;
-
-  const btnInitGame = document.querySelector("#btn-init-game");
-  btnInitGame.addEventListener("click", initGame);
-
-  const cntNumbers = document.querySelectorAll('.cnt-numbers .number');
-  cntNumbers.forEach(cntNumber => {
-      cntNumber.addEventListener('click', () => clickNumber(cntNumber));
-  });
-}
-
-const gameData = new GameData();
-const ROUTER = new Router(PATHS,()=>{initViewHome()});
-
+const userElm = document.querySelector('#username');
+userElm.addEventListener('input', function (e) {
+    const value = e.target.value;    
+    const charsOK = value.replace(/[^a-zA-Z0-9]/g, '');
+    if (value !== charsOK) {
+        e.target.value = charsOK;
+    }
+});
 
 const goGame = () => {
     const userElm = document.querySelector('#username');
@@ -49,12 +22,10 @@ const goGame = () => {
     gameData.gameOver = false;
     gameData.score = 0;
     
-    ROUTER.load('game',true,()=>{initViewGame()});
+    ROUTER.load('game');
     const userText = document.querySelector('#username-text');
     userText.innerHTML = gameData.userName;    
 }
-
-
 
 const prepareTimer = () => {
     let i = 0;
@@ -62,12 +33,13 @@ const prepareTimer = () => {
     const cntTimer = document.querySelector('#cnt-timer');
     cntTimer.classList.remove('hidden');
     const timer = document.querySelector('#timer-data');
-    timer.innerHTML = gameData.getDurationByLevel(level.value) / valueInterval;
+    timer.innerHTML = parseInt(level.value) / valueInterval;
 
     const intervalTimer = setInterval(() => {
         i++;
         const level = document.querySelector('#level');
-        let restTime = (gameData.getDurationByLevel(level.value) - (valueInterval*i)) / valueInterval;
+
+        let restTime = (parseInt(level.value) - (i * valueInterval)) / valueInterval;
         if (restTime >= 0){
             timer.innerHTML = restTime;
         }else{
@@ -80,7 +52,7 @@ const initGame = () => {
     // validaciones
     if (gameData.gameOver){
         alert(`Gracias por jugar ${gameData.userName}, has obtenido una puntuación de ${gameData.score} puntos.`);
-        ROUTER.load('home',true,()=>{initViewHome()});
+        ROUTER.load('home');
         return;
     }
     prepareTimer();
@@ -119,9 +91,17 @@ const prepareBoard = ()=>{
         });
         setDisabledNumbers(false);
 
-    }, gameData.getDurationByLevel(level.value));
+    }, level.value);
 }
 
+const getPointsByLevel =  ()=>{
+    const level = document.querySelector('#level');
+    return (level.value === '10000') ? 10 : (level.value === '5000') ? 20 : 30;
+}
+const newScore =  ()=>{    
+    const level = document.querySelector('#level');
+    return gameData.score + ((level.value === '10000') ? 10 : (level.value === '5000') ? 20 : 30);
+}
 const clickNumber =  (elm) =>{
     let numSelected = parseInt(elm.value);
     if(numSelected === gameData.numberToFind){
@@ -132,7 +112,8 @@ const clickNumber =  (elm) =>{
         elm.innerHTML = elm.value;
 
         const scoreData = document.querySelector('#score-data');
-        gameData.addScore(gameData.getPointsByLevel(level.value));
+        // gameData.score = newScore();
+        gameData.addScore(getPointsByLevel());
         scoreData.innerHTML = gameData.score;
 
         setTimeout(() => {
@@ -171,21 +152,3 @@ const setDisabledNumbers =  (disabled) =>{
         cntNumber.disabled = disabled;
     });
 }
-
-
-
-
-/*******
- * Service worker
- ******/
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function() {
-    navigator.serviceWorker
-      .register("./js/serviceWorker.js")
-      .then(res => console.log("service worker registered"))
-      .catch(err => console.log("service worker not registered", err));
-  });
-}
-
-

@@ -8,7 +8,15 @@ export default defineConfig({
         {
           src: 'sounds/*',
           dest: 'sounds'
-        }
+        },
+        {
+          src: 'images/*',
+          dest: 'images'
+        },
+        {
+          src: 'serviceWorker.js',
+          dest: ''
+        },
       ]
     })
   ]

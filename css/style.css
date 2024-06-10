@@ -17,7 +17,7 @@ html,body {
 main {
   max-width: 900px;
   margin: auto;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   text-align: center;
 }
 
@@ -127,6 +127,9 @@ background-color: #0bc539;
 background-color: #eb1717;
 }
 
+.cnt-play-game {
+    padding: 0 1rem;
+}
 
 
 /* Estilo para barra de navegación */

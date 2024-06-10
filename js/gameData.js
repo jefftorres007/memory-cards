@@ -13,9 +13,9 @@ export class GameData {
         this.score = 0;
         
         this.levels = [
-            {level: '0', name: 'Facil', points: 10, duration: 10000, hits: 1},
-            {level: '1', name: 'Normal', points: 20, duration: 5000, hits: 1},
-            {level: '2', name: 'Dificil', points: 30, duration: 2000, hits: 1},
+            {level: '0', name: 'Facil', points: 10, duration: 10, hits: 1},
+            {level: '1', name: 'Normal', points: 20, duration: 5, hits: 1},
+            {level: '2', name: 'Dificil', points: 30, duration: 2, hits: 1},
         ]
     }
 

@@ -2,41 +2,6 @@ import { GameData } from './js/gameData.js';
 import { Router } from './js/router.js';
 import { PATHS } from './js/routes.js';
 
-const initViewHome = () =>{
-  const userElm = document.querySelector('#username');
-  userElm.addEventListener('input', function (e) {
-      const value = e.target.value;    
-      const charsOK = value.replace(/[^a-zA-Z0-9]/g, '');
-      if (value !== charsOK) {
-          e.target.value = charsOK;
-      }
-
-      const btnGoGame = document.querySelector("#btn-go-game");
-      btnGoGame.addEventListener("click", goGame);
-  });
-}
-const initViewGame = () =>{
-
-  const level = document.querySelector("#level");
-  let levels = ``;
-  for (let i = 0; i < gameData.levels.length; i++) {
-    levels += `<option value="${gameData.levels[i].level}">${gameData.levels[i].name}</option>`   
-  }
-  level.innerHTML = levels;
-
-  const btnInitGame = document.querySelector("#btn-init-game");
-  btnInitGame.addEventListener("click", initGame);
-
-  const cntNumbers = document.querySelectorAll('.cnt-numbers .number');
-  cntNumbers.forEach(cntNumber => {
-      cntNumber.addEventListener('click', () => clickNumber(cntNumber));
-  });
-}
-
-const gameData = new GameData();
-const ROUTER = new Router(PATHS,()=>{initViewHome()});
-
-
 const goGame = () => {
     const userElm = document.querySelector('#username');
 
@@ -55,6 +20,51 @@ const goGame = () => {
 }
 
 
+const initViewHome = () =>{
+    const userElm = document.querySelector('#username');
+
+
+    userElm.addEventListener('input', function (e) {
+        const value = e.target.value;    
+        const charsOK = value.replace(/[^a-zA-Z0-9]/g, '');
+        if (value !== charsOK) {
+            e.target.value = charsOK;
+        }
+    });
+
+    userElm.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            goGame();
+        }
+    });
+
+    const btnGoGame = document.querySelector("#btn-go-game");
+    btnGoGame.addEventListener("click", goGame);
+}
+const initViewGame = () =>{
+
+    const level = document.querySelector("#level");
+    let levels = ``;
+    for (let i = 0; i < gameData.levels.length; i++) {
+        levels += `<option value="${gameData.levels[i].level}">${gameData.levels[i].name}</option>`;
+    }
+    level.innerHTML = levels;
+
+    const btnInitGame = document.querySelector("#btn-init-game");
+    btnInitGame.addEventListener("click", initGame);
+
+    const cntNumbers = document.querySelectorAll('.cnt-numbers .number');
+    cntNumbers.forEach(cntNumber => {
+        cntNumber.addEventListener('click', () => clickNumber(cntNumber));
+    });
+}
+
+const gameData = new GameData();
+const ROUTER = new Router(PATHS,()=>{initViewHome()});
+
+
+
+
 
 const prepareTimer = () => {
     let i = 0;
@@ -62,12 +72,12 @@ const prepareTimer = () => {
     const cntTimer = document.querySelector('#cnt-timer');
     cntTimer.classList.remove('hidden');
     const timer = document.querySelector('#timer-data');
-    timer.innerHTML = gameData.getDurationByLevel(level.value) / valueInterval;
+    timer.innerHTML = gameData.getDurationByLevel(level.value) ;
 
     const intervalTimer = setInterval(() => {
         i++;
         const level = document.querySelector('#level');
-        let restTime = (gameData.getDurationByLevel(level.value) - (valueInterval*i)) / valueInterval;
+        let restTime = gameData.getDurationByLevel(level.value) - i ;
         if (restTime >= 0){
             timer.innerHTML = restTime;
         }else{
@@ -119,7 +129,7 @@ const prepareBoard = ()=>{
         });
         setDisabledNumbers(false);
 
-    }, gameData.getDurationByLevel(level.value));
+    }, gameData.getDurationByLevel(level.value) * 1000);
 }
 
 const clickNumber =  (elm) =>{
@@ -178,12 +188,12 @@ const setDisabledNumbers =  (disabled) =>{
  ************************************/
 
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function() {
-    navigator.serviceWorker
-      .register("/serviceWorker.js")
-      .then(res => console.log("service worker registered"))
-      .catch(err => console.log("service worker not registered", err));
-  });
+    window.addEventListener("load", function() {
+        navigator.serviceWorker
+        .register("/serviceWorker.js")
+        .then(res => console.log("service worker registered"))
+        .catch(err => console.log("service worker not registered", err));
+    });
 }
 
 

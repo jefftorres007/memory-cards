@@ -97,40 +97,41 @@ const initGame = () => {
     prepareBoard(); 
 }
 
-const prepareBoard = ()=>{
+const prepareBoard = () => {
     gameData.inGame = true;
-    const numbers = Array.from({ length: 9 }, (_, i) => i + 1).sort(() => Math.random() -0.5);    
+    const numbers = Array.from({ length: 9 }, (_, i) => i + 1).sort(() => Math.random() - 0.5);
     const cntNumbers = document.querySelectorAll('.cnt-numbers .number');
-    
-    cntNumbers.forEach((cntNumber,i) => {
+    const fragment = document.createDocumentFragment();
+
+    cntNumbers.forEach((cntNumber, i) => {
         cntNumber.innerHTML = numbers[i];
         cntNumber.value = numbers[i];
+        cntNumber.classList.remove('no');
+        cntNumber.classList.remove('yes');
+        fragment.appendChild(cntNumber);
     });
 
     const elmTitle = document.querySelector('#title-1');
     elmTitle.innerHTML = 'Memorice las cartas';
     
-    cntNumbers.forEach((cntNumber,i) => {
-        cntNumber.innerHTML = numbers[i];
-        cntNumber.value = numbers[i];
-        cntNumber.classList.remove('no');
-        cntNumber.classList.remove('yes');
-    });
+    const cntNumbersContainer = document.querySelector('.cnt-numbers');
+    cntNumbersContainer.innerHTML = '';
+    cntNumbersContainer.appendChild(fragment);
 
     setDisabledControlsGame(true);
+
     setTimeout(() => {
-        
-        const elmTitle = document.querySelector('#title-1');
         gameData.numberToFind = Math.floor(Math.random() * 9) + 1;
-        elmTitle.innerHTML = `Seleccione el número ${gameData.numberToFind}`;        
-        
+        elmTitle.innerHTML = `Seleccione el número ${gameData.numberToFind}`;
+
         cntNumbers.forEach((cntNumber) => {
             cntNumber.innerHTML = '?';
         });
-        setDisabledNumbers(false);
 
+        setDisabledNumbers(false);
     }, gameData.getDurationByLevel(level.value) * 1000);
 }
+
 
 const clickNumber =  (elm) =>{
     let numSelected = parseInt(elm.value);

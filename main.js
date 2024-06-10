@@ -45,8 +45,8 @@ const initViewGame = () =>{
 
     const level = document.querySelector("#level");
     let levels = ``;
-    for (let i = 0; i < gameData.levels.length; i++) {
-        levels += `<option value="${gameData.levels[i].level}">${gameData.levels[i].name}</option>`;
+    for (const element of gameData.levels) {
+        levels += `<option value="${element.level}">${element.name}</option>`;
     }
     level.innerHTML = levels;
 

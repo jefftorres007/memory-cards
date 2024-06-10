@@ -1,32 +1,31 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* Estilo elementos genéricos */
 html,body {
-  background: #fdfdfd;
-  font-family: "Nunito", sans-serif;
-  font-size: 1rem;
-  height: 100%;
-  margin: 0;
+    background: #fdfdfd;
+    font-family: "Nunito", sans-serif;
+    font-size: 1rem;
+    height: 100%;
+    margin: 0;
 }
 
 main {
-  max-width: 900px;
-  margin: auto;
-  /* padding: 0.5rem; */
-  text-align: center;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
 }
 
 h1 {
-  color: #e74c3c;
+    color: #e74c3c;
 }
 
 .hidden{
-  display: none;
+    display: none;
 }
 
 
@@ -96,35 +95,35 @@ h1 {
 }
 
 .cnt-numbers {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  max-width: 400px;
-  margin: 1.5rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 1.5rem auto;
 }
 
 .cnt-numbers .number {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: calc(33.333% - 1rem);
-  height: 100px;
-  background-color: #3f51b5;
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  border-radius: 8px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(33.333% - 1rem);
+    height: 100px;
+    background-color: #ffffff;
+    color: #3f51b5;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid #3f51b5;
 }
 
 .cnt-numbers .number.yes{
-background-color: #0bc539;
+    background-color: #0bc539;
 }
 
 .cnt-numbers .number.no{
-background-color: #eb1717;
+    background-color: #eb1717;
 }
 
 .cnt-play-game {
@@ -134,52 +133,51 @@ background-color: #eb1717;
 
 /* Estilo para barra de navegación */
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #3f51b5;
-  color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3f51b5;
+    color: white;
 }
 
 ul {
-  list-style: none;
-  display: flex;
-  
+    list-style: none;
+    display: flex;  
 }
 
 li {
-  margin-right: 1rem;
+    margin-right: 1rem;
 }
 
 
 /* Estilo para el select */
 .select {
-  display: block;
-  width: 40%;
-  padding: 0.75rem;
-  margin: 0.5rem 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  background-color: #fff;
-  transition: border-color 0.3s, box-shadow 0.3s;
-  appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg fill="%23000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 10l5 5 5-5z"/></svg>');
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
-  background-size: 1rem;
+    display: block;
+    width: 40%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
 }
 
 .select:focus {
-  border-color: #3f51b5;
-  box-shadow: 0 0 8px rgba(63, 81, 181, 0.2);
-  outline: none;
+    border-color: #3f51b5;
+    box-shadow: 0 0 8px rgba(63, 81, 181, 0.2);
+    outline: none;
 }
 
 
 /* Estilo para el timer/score */
 .timer{
-  color: #e74c3c;
+    color: #e74c3c;  
 }
 .score, .timer{
     text-align: right;
